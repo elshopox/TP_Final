@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Venta de Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>CompuPart..</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('agregar') }}">Agregar Producto</a></li>
+                <li><a href="{{ url_for('ver_carrito') }}">Ver Carrito</a></li>
+                <li>
+                    <form action="{{ url_for('buscar') }}" method="POST">
+                        <input type="text" name="termino" placeholder="Buscar productos" required>
+                        <button type="submit">Buscar</button>
+                    </form>
+                <li><a href="{{ url_for('quienes_somos') }}">Quienes Somos</a></li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main><br><br><br><br>
+    <footer>
+        <p>&copy; 2024 UPEA - CompuPart</p>
+    </footer>
+</body>
+</html>

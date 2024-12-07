@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<center>
+<h2>Carrito de Compras</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in carrito %}
+        <tr>
+            <td>{{ item['nombre'] }}</td>
+            <td>Bs.{{ item['precio'] }}</td>
+            <td>{{ item['cantidad'] }}</td>
+            <td>Bs.{{ item['precio'] * item['cantidad'] }}</td>
+            <td><a href="{{ url_for('eliminar_carrito', id=item['id']) }}" class="btn">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>Total a pagar: Bs.{{ total }}</p>
+<a href="{{ url_for('formulario') }}" class="btn">Proceder a Facturación</a>
+</center>
+{% endblock %}

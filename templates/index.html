@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+<h2>Productos Disponibles</h2>
+</center>
+<div class="productos">
+    {% for producto in productos %}
+    <div class="producto">
+        <img src="{{ url_for('static', filename=producto['imagen']) }}" alt="{{ producto['nombre'] }}" width="150">
+        <h3>{{ producto['nombre'] }}</h3>
+        <p>{{ producto['descripcion'] }}</p>
+        <p>Precio: Bs.{{ producto['precio'] }}</p>
+        <p>Unidades: {{ producto['unidades'] }}</p>
+        {% if producto['unidades'] > 0 %}
+        <a href="{{ url_for('agregar_carrito', id=producto['id']) }}" class="btn">Agregar al carrito</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

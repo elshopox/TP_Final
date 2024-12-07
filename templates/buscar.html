@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Resultados de la Búsqueda</h2>
+{% if productos %}
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+    </tr>
+    {% for producto in productos %}
+    <tr>
+        <td>{{ producto[1] }}</td>
+        <td>{{ producto[2] }}</td>
+        <td>${{ producto[3] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No se encontraron productos con "{{ query }}".</p>
+{% endif %}
+{% endblock %}

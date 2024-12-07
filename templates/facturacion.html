@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+    <h2>Factura</h2>
+
+    <!-- Datos del cliente -->
+    <p><strong>Nombre:</strong> {{ nombre }}</p>
+    <p><strong>Apellido:</strong> {{ apellido }}</p>
+    <p><strong>Fecha:</strong> {{ fecha }}</p>
+
+    <h3>Productos</h3>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in carrito %}
+            <tr>
+                <td>{{ item['nombre'] }}</td>
+                <td>Bs.{{ item['precio'] }}</td>
+                <td>{{ item['cantidad'] }}</td>
+                <td>Bs.{{ item['precio'] * item['cantidad'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Total a pagar:</strong> Bs.{{ total }}</p>
+    
+    <!-- Botón para imprimir la factura -->
+    <button onclick="window.print()">Generar Factura e Imprimir</button>
+</center>
+{% endblock %}

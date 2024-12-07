@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Editar Producto</h2>
+<form action="{{ url_for('editar', id=producto[0]) }}" method="post">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ producto[1] }}" required>
+
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" name="descripcion" required>{{ producto[2] }}</textarea>
+
+    <label for="precio">Precio:</label>
+    <input type="number" id="precio" name="precio" step="0.01" value="{{ producto[3] }}" required>
+
+    <label for="imagen">URL de la Imagen:</label>
+    <input type="text" id="imagen" name="imagen" value="{{ producto[4] }}" required>
+
+    <label for="unidades">Unidades:</label>
+    <input type="number" id="unidades" name="unidades" value="{{ producto[5] }}" required>
+
+    <button type="submit" class="btn">Actualizar</button>
+</form>
+{% endblock %}
